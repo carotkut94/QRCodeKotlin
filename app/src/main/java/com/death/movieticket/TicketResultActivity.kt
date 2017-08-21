@@ -1,5 +1,11 @@
 package com.death.movieticket
 
+
+/**
+ * Created by sidhantrajora on 21/08/17.
+ * REF: Ravi Tamada's code from https://www.androidhive.info/2017/08/android-barcode-scanner-using-google-mobile-vision-building-movie-tickets-app/
+ */
+
 import android.os.Bundle
 import android.support.v4.content.ContextCompat
 import android.support.v7.app.AppCompatActivity
@@ -16,12 +22,10 @@ import android.widget.Toast
 
 import com.android.volley.Request
 import com.android.volley.Response
-import com.android.volley.VolleyError
 import com.android.volley.toolbox.JsonObjectRequest
 import com.bumptech.glide.Glide
 import com.google.gson.Gson
 import com.google.gson.JsonSyntaxException
-import com.google.gson.annotations.SerializedName
 
 import org.json.JSONObject
 

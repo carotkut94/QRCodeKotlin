@@ -8,7 +8,9 @@ import com.android.volley.toolbox.Volley
 
 /**
  * Created by sidhantrajora on 21/08/17.
+ * REF: Ravi Tamada's code from https://www.androidhive.info/2017/08/android-barcode-scanner-using-google-mobile-vision-building-movie-tickets-app/
  */
+
 class MyApp : Application() {
     override fun onCreate() {
         super.onCreate()

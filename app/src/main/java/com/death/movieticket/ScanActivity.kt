@@ -1,5 +1,9 @@
 package com.death.movieticket
 
+/**
+ * Created by sidhantrajora on 21/08/17.
+ * REF: Ravi Tamada's code from https://www.androidhive.info/2017/08/android-barcode-scanner-using-google-mobile-vision-building-movie-tickets-app/
+ */
 
 import android.content.Intent
 import android.support.v7.app.AppCompatActivity
