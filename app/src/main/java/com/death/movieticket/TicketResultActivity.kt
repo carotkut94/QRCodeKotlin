@@ -27,17 +27,17 @@ import org.json.JSONObject
 
 class TicketResultActivity : AppCompatActivity() {
 
-    private var txtName: TextView? = null
-    private var txtDuration: TextView? = null
-    private var txtDirector: TextView? = null
-    private var txtGenre: TextView? = null
-    private var txtRating: TextView? = null
-    private var txtPrice: TextView? = null
-    private var txtError: TextView? = null
-    private var imgPoster: ImageView? = null
-    private var btnBuy: Button? = null
-    private var progressBar: ProgressBar? = null
-    private var ticketView: TicketView? = null
+    lateinit var txtName: TextView
+    lateinit var txtDuration: TextView
+    lateinit var txtDirector: TextView
+    lateinit var txtGenre: TextView
+    lateinit var txtRating: TextView
+    lateinit var txtPrice: TextView
+    lateinit var txtError: TextView
+    lateinit var imgPoster: ImageView
+    lateinit var btnBuy: Button
+    lateinit var progressBar: ProgressBar
+    lateinit var ticketView: TicketView
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -100,9 +100,9 @@ class TicketResultActivity : AppCompatActivity() {
     }
 
     private fun showNoTicket() {
-        txtError!!.visibility = View.VISIBLE
-        ticketView!!.visibility = View.GONE
-        progressBar!!.visibility = View.GONE
+        txtError.visibility = View.VISIBLE
+        ticketView.visibility = View.GONE
+        progressBar.visibility = View.GONE
     }
 
     /**
@@ -115,23 +115,23 @@ class TicketResultActivity : AppCompatActivity() {
             val movie = Gson().fromJson(response.toString(), Movie::class.java)
             Log.d("Data", movie.toString())
             if (movie != null) {
-                txtName?.text = movie.name
-                txtDirector?.text = movie.director
-                txtDuration?.text = movie.duration
-                txtGenre?.text = movie.genre
-                txtRating?.text = "" + movie.rating
-                txtPrice?.text = movie.price
+                txtName.text = movie.name
+                txtDirector.text = movie.director
+                txtDuration.text = movie.duration
+                txtGenre.text = movie.genre
+                txtRating.text = "" + movie.rating
+                txtPrice.text = movie.price
                 Glide.with(this).load(movie.poster).into(imgPoster)
 
                 if (movie.isReleased) {
-                    btnBuy?.text = getString(R.string.btn_buy_now)
-                    btnBuy?.setTextColor(ContextCompat.getColor(this, R.color.colorPrimary))
+                    btnBuy.text = getString(R.string.btn_buy_now)
+                    btnBuy.setTextColor(ContextCompat.getColor(this, R.color.colorPrimary))
                 } else {
-                    btnBuy?.text = getString(R.string.btn_coming_soon)
-                    btnBuy?.setTextColor(ContextCompat.getColor(this, R.color.btn_disabled))
+                    btnBuy.text = getString(R.string.btn_coming_soon)
+                    btnBuy.setTextColor(ContextCompat.getColor(this, R.color.btn_disabled))
                 }
-                ticketView?.visibility = View.VISIBLE
-                progressBar?.visibility = View.GONE
+                ticketView.visibility = View.VISIBLE
+                progressBar.visibility = View.GONE
             } else {
                 // movie not found
                 showNoTicket()
@@ -155,26 +155,7 @@ class TicketResultActivity : AppCompatActivity() {
         return super.onOptionsItemSelected(item)
     }
 
-    private inner class Movie {
-        var name: String? = null
-            internal set
-        var director: String? = null
-            internal set
-        var poster: String? = null
-            internal set
-        var duration: String? = null
-            internal set
-        var genre: String? = null
-            internal set
-        var price: String? = null
-            internal set
-        var rating: Float = 0.toFloat()
-            internal set
-
-        @SerializedName("released")
-        var isReleased: Boolean = false
-            internal set
-    }
+    private inner class Movie(var name:String, var director:String, var poster:String, var duration:String, var genre:String, var price:String, var rating:String, var isReleased:Boolean )
 
     companion object {
         private val TAG = TicketResultActivity::class.java.simpleName
